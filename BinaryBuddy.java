@@ -21,8 +21,9 @@ public class BinaryBuddy extends Observable {
     protected static ArrayList<Tree.TreeNode> freeList = new ArrayList<Tree.TreeNode>();
     // holds a free memory blocks ready to hold a process
     protected static ArrayList<Tree.TreeNode> leafList = new ArrayList<Tree.TreeNode>();
-
     //for testing, holds all leaf nodes, protected for JUnit testing
+    
+    
     /**
      * Constructor for BinaryBuddy
      */
@@ -52,8 +53,6 @@ public class BinaryBuddy extends Observable {
             newNode.process = proc;
             memoryUsed = newNode.memSize + memoryUsed;
             System.out.println("Space for process " + proc + " found");
-//            leafList.clear();
-//            getLeaves(root);
             return newNode;
         }
         if ((newNode != null && foundDiv > 1)) {
