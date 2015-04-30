@@ -44,7 +44,6 @@ public class MemoryVisual extends JFrame implements Observer {
         d = (ArrayList<Tree.TreeNode>) data;
         repaint();
     }
-
     /**
      * a method that paints the bar
      *
@@ -59,14 +58,22 @@ public class MemoryVisual extends JFrame implements Observer {
             int barH = d.get(i).memSize * 10;
 
             if (d.get(i).process.equals("free")) {
+                drawBlockSize(String.valueOf(d.get(i).memSize), 250, yStart -(barH/2), g);
                 g.setColor(Color.green);
             } else {
+                drawBlockSize(String.valueOf(d.get(i).memSize), 250, yStart -(barH/2), g);
                 g.setColor(Color.red);
             }
             yStart = yStart - barH;
             g.fill3DRect(xStart, yStart, 300, barH, true);
         }
     }
+    
+    void drawBlockSize(String size, int x, int y, Graphics g){
+	   
+	   g.setColor(Color.black);
+	   g.drawString(size, x, y);   
+	   }
 
     public static void main(String args[]) {
 
