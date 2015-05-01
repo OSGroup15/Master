@@ -1,3 +1,4 @@
+
 /*
  * Zach Mason, Ryan Schoppy, Darren Martin, Brian Grillo
  * Operation Systems
@@ -62,6 +63,7 @@ public class MemoryVisual extends JFrame implements Observer {
                 g.setColor(Color.green);
             } else {
                 drawBlockSize(String.valueOf(d.get(i).memSize), 250, yStart -(barH/2), g);
+                g.drawString(d.get(i).process, 625, yStart -(barH/2));
                 g.setColor(Color.red);
             }
             yStart = yStart - barH;
