@@ -51,7 +51,7 @@ public class MemoryVisual extends JFrame implements Observer {
      * @param Graphics g
      */
     public void paint(Graphics g) {
-        repaint();
+        super.paint(g);
         int xStart = 300;
         int yStart = 1280;
 
