@@ -28,7 +28,7 @@ public class BinaryBuddy extends Observable {
      * Constructor for BinaryBuddy
      */
     public BinaryBuddy() {
-        maxMemory = 128;
+        maxMemory = 64;
         tree = new Tree();
         root = tree.new TreeNode(maxMemory, "free");
         memoryUsed = 0;
