@@ -56,7 +56,7 @@ public class MemoryVisual extends JFrame implements Observer {
         int yStart = 1280;
 
         for (int i = 0; i < d.size(); i++) {
-            int barH = d.get(i).memSize * 10;
+            int barH = d.get(i).memSize * 20;
 	// Displays the letters being allocated on the right and the memory locations on the left
             if (d.get(i).process.equals("free")) {
                 drawBlockSize(String.valueOf(d.get(i).memSize), 250, yStart -(barH/2), g);
