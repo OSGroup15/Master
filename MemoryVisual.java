@@ -56,7 +56,7 @@ public class MemoryVisual extends JFrame implements Observer {
         int yStart = 1280;
 
         for (int i = 0; i < d.size(); i++) {
-            int barH = d.get(i).memSize * 10;
+            int barH = d.get(i).memSize * 20;
 
             if (d.get(i).process.equals("free")) {
                 g.setColor(Color.green);
