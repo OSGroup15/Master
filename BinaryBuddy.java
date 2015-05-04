@@ -3,7 +3,7 @@
  * Operation Systems
  * Binary Buddy Memory Allocation
  *
- * version 4.28.2015
+ * version 05.03.2015
  */
 package tree;
 
@@ -21,14 +21,13 @@ public class BinaryBuddy extends Observable {
     protected static ArrayList<Tree.TreeNode> freeList = new ArrayList<Tree.TreeNode>();
     // holds a free memory blocks ready to hold a process
     protected static ArrayList<Tree.TreeNode> leafList = new ArrayList<Tree.TreeNode>();
-    //for testing, holds all leaf nodes, protected for JUnit testing
-    
-    
+        //for testing, holds all leaf nodes, protected for JUnit testing
+
     /**
      * Constructor for BinaryBuddy
      */
     public BinaryBuddy() {
-        maxMemory = 128;
+        maxMemory = 64;
         tree = new Tree();
         root = tree.new TreeNode(maxMemory, "free");
         memoryUsed = 0;
@@ -226,10 +225,11 @@ public class BinaryBuddy extends Observable {
         }
         getLeaves(t.left);
         getLeaves(t.right);
-
-        //return leafList;
     }
 
+    /**
+     * a method to notify observers of changes to leaflist
+     */
     public void showLeaves() {
         leafList.clear();
         getLeaves(root);
