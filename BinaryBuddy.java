@@ -245,38 +245,9 @@ public static void deallocate(String proc) {
         }
     }
 
-    /**
-     * used for testing
-     *
-     * @param args
-     */
+   
     public static void main(String args[]) {
-        new BinaryBuddy();
-
-        allocate(3, "A");
-        allocate(3, "B");
-        allocate(24, "C");
-        allocate(17, "D");
-        allocate(2, "E");
-        deallocate("D");
-        deallocate("A");
-        allocate(10, "F");
-        allocate(1, "G");
-        allocate(56, "H");
-        deallocate("H");
-        deallocate("B");
-        deallocate("E");
-        allocate(9, "J");
-        allocate(2, "K");
-        allocate(5, "L");
-        deallocate("F");
-        allocate(8, "M");
-        deallocate("J");
-
-        System.out.println();
-        System.out.println("Free and Used Memory Blocks:");
-        tree.printLeafNodes(root);
-
+        
     }
 
 }
