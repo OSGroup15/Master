@@ -66,60 +66,62 @@ public class BinaryBuddy extends Observable {
         return null;
     }
 
-    /**
-     * a method that deallocates memory
-     *
-     * @param proc
-     */
-    public static void deallocate(String proc) {
+   /**
+ * a method that deallocates memory
+ *
+ * @param proc
+ */
+public static void deallocate(String proc) {
 
-        Tree.TreeNode tmp = searchProcess(proc, root);
+    Tree.TreeNode tmp = searchProcess(proc, root);
 
-        if (tmp == null) {
-            System.out.println(" Cannot delete " + proc);
+    if (tmp == null) {
+        System.out.println(" Cannot delete " + proc);
 
+    } else {
+        memoryUsed = memoryUsed - tmp.memSize;
+        if (tmp == root) {
+            root.process = ("free");
         } else {
-            memoryUsed = memoryUsed - tmp.memSize;
-            if (tmp == root) {
-                root.process = ("free");
-            } else {
-                Tree.TreeNode tmpPar = tmp.parent;
-                while (tmpPar != root) {
-                    Tree.TreeNode sib;
-                    sib = getSibling(tmp);
-                    if (sib == null) {
-                        return;
-                    } else if (!sib.process.equals("free")) {
-                        tmp.process = "free";
-                        return;
-                    } else if (tmpPar.left.process.equals("free")) {
-                        tmpPar.left = null;
-                        tmpPar.right = null;
-                        tmpPar.process = "free";
-                    } else if (tmpPar.right.process.equals("free")) {
-                        tmpPar.left = null;
-                        tmpPar.right = null;
-                        tmpPar.process = "free";
-                    }
-                    tmp = tmp.parent;
-                    tmpPar = tmpPar.parent;
+            Tree.TreeNode tmpPar = tmp.parent;
+            while (tmpPar != root) {
+                Tree.TreeNode sib;
+                sib = getSibling(tmp);
+                if (sib == null) {
+                    return;
+                } else if (!sib.process.equals("free")) {
+                    tmp.process = "free";
+                    return;
+                } else if (tmpPar.left.process.equals("free")) {
+                    tmpPar.left = null;
+                    tmpPar.right = null;
+                    tmpPar.process = "free";
+                } else if (tmpPar.right.process.equals("free")) {
+                    tmpPar.left = null;
+                    tmpPar.right = null;
+                    tmpPar.process = "free";
                 }
-                if (tmpPar == root) {
-                    Tree.TreeNode sib;
-                    sib = getSibling(tmp);
-                    if (sib == null) {
-                        return;
-                    } else if (!sib.process.equals("free")) {
-                        tmp.process = "free";
-                    } else if (tmpPar.left.process.equals("free")) {
-                        tmpPar.process = "free";
-                    } else if (tmpPar.right.process.equals("free")) {
-                        tmpPar.left.process = "free";
-                    }
+                tmp = tmp.parent;
+                tmpPar = tmpPar.parent;
+            }
+            if (tmpPar == root) {
+                Tree.TreeNode sib;
+                sib = getSibling(tmp);
+                if (!sib.process.equals("free")) {
+                    tmp.process = "free";
+                } else if (tmpPar.left.process.equals("free")) {
+                    tmpPar.right.process = "free";
+                } else if (tmpPar.right.process.equals("free")) {
+                    tmpPar.left.process = "free";
                 }
+            }
+            if (root.left != null && root.left.process.equals("free") && root.right.process.equals("free")) {
+                root.left = root.right = null;
+                root.process = "free";
             }
         }
     }
+}
 
     /**
      * a method that finds a nodes sibling
