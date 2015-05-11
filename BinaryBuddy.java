@@ -246,8 +246,5 @@ public static void deallocate(String proc) {
     }
 
    
-    public static void main(String args[]) {
-        
-    }
 
 }
