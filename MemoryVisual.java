@@ -18,7 +18,8 @@ public class MemoryVisual extends JFrame implements Observer {
 
     final int width = 800;
     final int height = 1280;
-    private ArrayList<Tree.TreeNode> d;
+    private static ArrayList<Tree.TreeNode> d;
+    private static ArrayList<Integer> e;
 
     /**
      * Creates new form MemoryVisual
@@ -88,60 +89,42 @@ public class MemoryVisual extends JFrame implements Observer {
         g.drawString(size, x, y);
     }
 
-    public static void main(String args[]) {
+     public static void main(String args[]) {
 
         BinaryBuddy binary = new BinaryBuddy();
 
         MemoryVisual mv = new MemoryVisual();
         binary.addObserver(mv);
-
-        binary.showLeaves();
-        binary.allocate(3, "A");
-        binary.showLeaves();
-        binary.allocate(3, "B");
-        binary.showLeaves();
-        binary.allocate(24, "C");
-        binary.showLeaves();
-        binary.allocate(17, "D");
-        binary.showLeaves();
-        binary.allocate(2, "E");
-        binary.showLeaves();
-        binary.deallocate("D");
-        binary.showLeaves();
-        binary.deallocate("A");
-        binary.showLeaves();
-        binary.allocate(10, "F");
-        binary.showLeaves();
-        binary.allocate(1, "G");
-        binary.showLeaves();
-        binary.allocate(56, "H");
-        binary.showLeaves();
-        binary.deallocate("H");
-        binary.showLeaves();
-        binary.deallocate("B");
-        binary.showLeaves();
-        binary.deallocate("E");
-        binary.showLeaves();
-        binary.allocate(9, "J");
-        binary.showLeaves();
-        binary.allocate(2, "K");
-        binary.showLeaves();
-        binary.allocate(5, "L");
-        binary.showLeaves();
-        binary.deallocate("F");
-        binary.showLeaves();
-        binary.allocate(8, "M");
-        binary.showLeaves();
-        binary.deallocate("C");
-        binary.showLeaves();
-        binary.allocate(14, "N");
-        binary.showLeaves();
-        binary.allocate(6, "O");
-        binary.showLeaves();
-        binary.allocate(7, "P");
-        binary.showLeaves();
-        binary.deallocate("N");
-        binary.showLeaves();
+        Random rn = new Random();
+        e = new  ArrayList<Integer>();
+        
+        for(int i = 0; i < 50; i++)
+        {
+        	int choice = rn.nextInt(2);
+        	if(choice == 0)
+        	{
+        		if(e.size() != 0)
+        		{
+        			int rand = rn.nextInt(e.size());
+        			String temp = Integer.toString(e.get(rand));
+        			binary.showLeaves();
+        			binary.deallocate(temp);
+        			e.remove(rand);
+        		}
+        		
+        	}
+        	else
+        	{
+        		int tmp = d.size();
+        		int size = rn.nextInt(63)+1;
+        		binary.showLeaves();
+        		binary.allocate(size,Integer.toString(i));
+        		if (tmp != d.size())
+        		{
+        			e.add(i);
+        		}
+        	}
+        }
     }
 
 }
