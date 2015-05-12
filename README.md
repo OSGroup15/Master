@@ -1,4 +1,4 @@
-# Stage2
+# Master
 
 All project code is in Tree.java, BinaryBuddy.java, and MemoryVisual.java files.
 
