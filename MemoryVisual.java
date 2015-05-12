@@ -19,7 +19,6 @@ public class MemoryVisual extends JFrame implements Observer {
     final int width = 800;
     final int height = 1280;
     private static ArrayList<Tree.TreeNode> d;
-    private static ArrayList<Integer> e;
     private static ArrayList<String> usedList = new ArrayList<String>();
 
     /**
@@ -90,43 +89,7 @@ public class MemoryVisual extends JFrame implements Observer {
         g.drawString(size, x, y);
     }
 
-     public static void main(String args[]) {
-
-        BinaryBuddy binary = new BinaryBuddy();
-
-        MemoryVisual mv = new MemoryVisual();
-        binary.addObserver(mv);
-        Random rn = new Random();
-        e = new  ArrayList<Integer>();
-        
-        for(int i = 0; i < 50; i++)
-        {
-        	int choice = rn.nextInt(2);
-        	if(choice == 0)
-        	{
-        		if(e.size() != 0)
-        		{
-        			int rand = rn.nextInt(e.size());
-        			String temp = Integer.toString(e.get(rand));
-        			binary.showLeaves();
-        			binary.deallocate(temp);
-        			e.remove(rand);
-        		}
-        		
-        	}
-        	else
-        	{
-        		int tmp = d.size();
-        		int size = rn.nextInt(63)+1;
-        		binary.showLeaves();
-        		binary.allocate(size,Integer.toString(i));
-        		if (tmp != d.size())
-        		{
-        			e.add(i);
-        		}
-        	}
-        }
-    }
+     
     
     public static void runVisual() {
         BinaryBuddy binary = new BinaryBuddy();
