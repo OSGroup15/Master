@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 public class MemoryVisual extends JFrame implements Observer {
 
